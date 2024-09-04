@@ -1,6 +1,6 @@
 const express = require('express');
 //const passport = require('passport');
-//const connectDB = require('./config/database');
+const connectDB = require('./config/database');
 //var cors=require('cors');
 
 const app = express();
