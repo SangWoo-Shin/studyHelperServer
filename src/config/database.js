@@ -15,6 +15,7 @@ async function connect() {
     await mongoose.connect(mongoDBConnectionString, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      dbName: 'user',
     });
     isConnected = true;
     console.log('=> using new database connection');

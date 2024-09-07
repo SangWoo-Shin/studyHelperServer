@@ -1,10 +1,14 @@
 const express = require('express');
 //const passport = require('passport');
 const connectDB = require('./config/database');
-//var cors=require('cors');
+var cors=require('cors');
+const userRoutes = require('./routes/userRoute');
 
 const app = express();
-//app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 //app.use('/uploads', express.static(__dirname + '/uploads'));
 //app.use(passport.initialize());
 app.use(express.json());
@@ -24,3 +28,5 @@ connectDB().then(() => {
 app.get('/', (req, res) => {
   res.send('Hello World');
 });
+
+app.use('/', userRoutes); 
