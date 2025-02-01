@@ -1,9 +1,14 @@
 {
-  "root": "your-project-name",
   "builds": [
     {
       "src": "your-project-name/package.json",
       "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "your-project-name/$1"
     }
   ]
 }
