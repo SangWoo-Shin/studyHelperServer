@@ -36,7 +36,7 @@ const createOTP = async (req, res) => {
 }
 
 const verifyOTP = async (req, res) => {
-    const {name, email, otp, role, password} = req.body;
+    const {name, email, otp, password} = req.body;
     const hashedPassword = await bcrypt.hash(password, 10); 
     if( !email || !otp ) {
         return res.status(400).json({ error: 'Email and OTP are required' });
@@ -64,7 +64,6 @@ const verifyOTP = async (req, res) => {
                 const newUser = await User.create({
                     name,
                     email,
-                    role,
                     password: hashedPassword,
                 })
                 const token = generateToken(newUser);

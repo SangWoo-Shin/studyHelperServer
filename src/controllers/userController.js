@@ -36,7 +36,11 @@ const verifyUser = async (req, res) => {
             return res.status(401).json({ error: 'Invalid password' });
         }
 
-        return res.status(200).json({ message: 'Login successful', user: userExist });
+        return res.status(200).json({
+            _id: userExist._id,
+            email: userExist.email,
+            name: userExist.name,
+        });
     } catch (err) {
         console.error("Error occurred: ", err);
         return res.status(500).json({ error: 'Internal Server Error' });
